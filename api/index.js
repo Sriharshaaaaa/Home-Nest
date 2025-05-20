@@ -19,7 +19,12 @@ mongoose
   });
 const __dirname = path.resolve();
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Vite's default port
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 // the upper express.json() accepts the json data
