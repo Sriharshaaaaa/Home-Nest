@@ -34,8 +34,12 @@ app.use(
       "http://localhost:5173",
       "http://localhost:3000",
       "https://home-nest-e4g1.onrender.com",
+      "https://home-nest-k24n.vercel.app",
+      "https://home-nest.vercel.app",
     ],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
