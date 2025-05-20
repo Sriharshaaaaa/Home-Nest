@@ -8,7 +8,11 @@ import authRouter from "./routes/authroute.js";
 import listingroute from "./routes/listingroute.js";
 import cookieParser from "cookie-parser";
 import path from "path";
+import { fileURLToPath } from "url";
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Enhanced MongoDB connection with better error handling
 mongoose
@@ -21,13 +25,16 @@ mongoose
     process.exit(1); // Exit if we can't connect to the database
   });
 
-const __dirname = path.resolve();
 const app = express();
 
 // Enhanced CORS configuration
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:3000"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "https://home-nest-e4g1.onrender.com",
+    ],
     credentials: true,
   })
 );
@@ -48,9 +55,13 @@ app.use("/api/listingroute", listingroute);
 
 // Only serve frontend files in production
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/client/dist")));
+  const clientDistPath = path.join(__dirname, "..", "client", "dist");
+  console.log("Serving static files from:", clientDistPath);
+
+  app.use(express.static(clientDistPath));
+
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+    res.sendFile(path.join(clientDistPath, "index.html"));
   });
 }
 
