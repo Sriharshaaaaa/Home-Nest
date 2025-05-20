@@ -154,7 +154,7 @@ export const Profile = () => {
   const handleListingDelete = async (listingId) => {
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/listing/delete/${listingId}`
+        `${import.meta.env.VITE_BACKEND_URL}/api/listingroute/delete/${listingId}`
       );
       const data = res.json();
       if (data.success == false) {

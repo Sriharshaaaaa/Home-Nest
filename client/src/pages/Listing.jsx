@@ -30,7 +30,7 @@ export default function Listing() {
       try {
         setLoading(true);
         const res = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/listing/get/${
+          `${import.meta.env.VITE_BACKEND_URL}/api/listingroute/get/${
             params.listingId
           }`
         );

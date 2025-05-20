@@ -126,7 +126,7 @@ export default function CreateListing() {
       setLoading(true);
       setError(false);
       const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/listing/create`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/listingroute/create`,
         {
           method: "POST",
           headers: {

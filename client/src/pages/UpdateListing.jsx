@@ -36,7 +36,7 @@ export default function CreateListing() {
     const fetchListing = async () => {
       const listingId = params.listingId;
       const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/listing/get/${listingId}`
+        `${import.meta.env.VITE_BACKEND_URL}/api/listingroute/get/${listingId}`
       );
       const data = await res.json();
       if (data.success === false) {

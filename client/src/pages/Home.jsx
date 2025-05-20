@@ -18,7 +18,7 @@ export const Home = () => {
         const res = await fetch(
           `${
             import.meta.env.VITE_BACKEND_URL
-          }/api/listing/get?offer=true&limit=4`
+          }/api/listingroute/get?offer=true&limit=4`
         );
         const data = await res.json();
         setOfferListings(data);
@@ -30,7 +30,7 @@ export const Home = () => {
         const res = await fetch(
           `${
             import.meta.env.VITE_BACKEND_URL
-          }/api/listing/get?type=rent&limit=4`
+          }/api/listingroute/get?type=rent&limit=4`
         );
         const data = await res.json();
         setRentListings(data);
@@ -42,7 +42,7 @@ export const Home = () => {
         const res = await fetch(
           `${
             import.meta.env.VITE_BACKEND_URL
-          }/api/listing/get?type=sale&limit=4`
+          }/api/listingroute/get?type=sale&limit=4`
         );
         const data = await res.json();
         setSaleListings(data);
