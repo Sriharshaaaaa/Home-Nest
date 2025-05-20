@@ -40,7 +40,7 @@ export const signin = async (req, res, next) => {
     next(error);
   }
 };
-export const google = async (req, res, nest) => {
+export const google = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
@@ -50,6 +50,7 @@ export const google = async (req, res, nest) => {
         .cookie("access_token", token, {
           httpOnly: true,
           secure: true,
+          sameSite: "none",
         })
         .status(200)
         .json(rest);
@@ -65,17 +66,20 @@ export const google = async (req, res, nest) => {
         avatar: req.body.photo,
       });
       await newUser.save();
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-      const { password: pass, ...rest } = user._doc;
+      const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
+      const { password: pass, ...rest } = newUser._doc;
       res
         .cookie("access_token", token, {
           httpOnly: true,
           secure: true,
+          sameSite: "none",
         })
         .status(200)
         .json(rest);
     }
-  } catch (error) {}
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const signOut = async (req, res, next) => {
