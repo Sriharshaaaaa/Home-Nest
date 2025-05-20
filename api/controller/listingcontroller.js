@@ -104,20 +104,13 @@ export const getListings = async (req, res, next) => {
 
     console.log("Final MongoDB query:", JSON.stringify(query, null, 2));
 
-    try {
-      const listings = await Listing.find(query)
-        .sort({ [sort]: order })
-        .limit(limit)
-        .skip(startIndex);
+    const listings = await Listing.find(query)
+      .sort({ [sort]: order })
+      .limit(limit)
+      .skip(startIndex);
 
-      console.log("Number of listings found:", listings.length);
-      return res.status(200).json(listings);
-    } catch (dbError) {
-      console.error("Database query error:", dbError);
-      return next(
-        errorHandler(500, "Database query error: " + dbError.message)
-      );
-    }
+    console.log("Number of listings found:", listings.length);
+    return res.status(200).json(listings);
   } catch (error) {
     console.error("Error in getListings:", error);
     return next(errorHandler(500, "Error fetching listings: " + error.message));
