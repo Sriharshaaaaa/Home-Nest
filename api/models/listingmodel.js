@@ -4,55 +4,55 @@ const listingSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      requied: true,
+      required: true,
     },
     description: {
       type: String,
-      requied: true,
+      required: true,
     },
     address: {
       type: String,
-      requied: true,
+      required: true,
     },
     regularPrice: {
       type: Number,
-      requied: true,
+      required: true,
     },
     discountPrice: {
       type: Number,
-      requied: true,
+      required: true,
     },
     bathrooms: {
       type: Number,
-      requied: true,
+      required: true,
     },
     bedrooms: {
       type: Number,
-      requied: true,
+      required: true,
     },
     furnished: {
       type: Boolean,
-      requied: true,
+      required: true,
     },
     parking: {
       type: Boolean,
-      requied: true,
+      required: true,
     },
     type: {
       type: String,
-      requied: true,
+      required: true,
     },
     offer: {
       type: Boolean,
-      requied: true,
+      required: true,
     },
     imageUrls: {
       type: Array,
-      requied: true,
+      required: true,
     },
     useRef: {
       type: String,
-      requied: true,
+      required: true,
     },
   },
   { timestamps: true }
